@@ -83,6 +83,7 @@ function App() {
           colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
         /> : <div className='submitspan'>Submit</div>}
       </button>
+      <div className='warning'>It might take some time for the backend to start as it is hosted in the free tier of Render</div>
 
       {error && <div className="error-message">{error}</div>}
 

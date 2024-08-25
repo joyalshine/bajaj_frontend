@@ -35,6 +35,10 @@ h1 {
 .submit-button:hover {
   background-color: #0056b3;
 }
+.warning{
+  margin-top: 10px;
+  text-align: center;
+}
 
 .error-message {
   color: red;
