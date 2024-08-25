@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
 import './App.css';
+import { ColorRing } from 'react-loader-spinner';
 
 function App() {
   const [jsonInput, setJsonInput] = useState('');
   const [response, setResponse] = useState(null);
   const [error, setError] = useState('');
+  const [isLoading, setisLoading] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const options = [
@@ -21,13 +23,16 @@ function App() {
 
   const handleSubmit = async () => {
     try {
+      setisLoading(true)
       const parsedInput = JSON.parse(jsonInput);
 
       const res = await axios.post('http://localhost:5000/bfhl', parsedInput);
 
       setResponse(res.data);
       setError('');
+      setisLoading(false)
     } catch (err) {
+      setisLoading(false)
       console.error(err);
       setError('Invalid JSON input or server error. Please check your input and try again.');
       setResponse(null);
@@ -68,8 +73,16 @@ function App() {
         <br />
       </fieldset>
       <button onClick={handleSubmit} className="submit-button">
-          Submit
-        </button>
+        {isLoading ? <ColorRing
+          visible={true}
+          height="40"
+          width="40"
+          ariaLabel="color-ring-loading"
+          wrapperStyle={{}}
+          wrapperClass="color-ring-wrapper"
+          colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+        /> : <div className='submitspan'>Submit</div>}
+      </button>
 
       {error && <div className="error-message">{error}</div>}
 

@@ -16,9 +16,12 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+.submitspan{
+  padding: 10px 20px;
+}
 
 .submit-button {
-  padding: 10px 20px;
+  padding: 0px 20px;
   font-size: 16px;
   color: white;
   background-color: #007bff;
