@@ -26,7 +26,7 @@ function App() {
       setisLoading(true)
       const parsedInput = JSON.parse(jsonInput);
 
-      const res = await axios.post('http://localhost:5000/bfhl', parsedInput);
+      const res = await axios.post('https://bajaj-backend-1-uzex.onrender.com/bfhl', parsedInput);
 
       setResponse(res.data);
       setError('');
